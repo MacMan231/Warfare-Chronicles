@@ -1,0 +1,3790 @@
+        function searchDoctrine() {
+            const query = document.getElementById('doctrineSearch').value;
+            if (!query) return;
+            
+            const resultsDiv = document.getElementById('doctrineResults');
+            
+            // Simulate doctrine analysis
+            resultsDiv.innerHTML = `
+                <div class="doctrine-example">
+                    <h4>🔍 Analysis Results for: "${query}"</h4>
+                    <div class="doctrine-card">
+                        <h5>Historical Context</h5>
+                        <p>Analyzing classical military principles and their application to modern scenarios...</p>
+                    </div>
+                    <div class="doctrine-card">
+                        <h5>Modern Application</h5>
+                        <p>This doctrine can be adapted for current military operations by considering technological advances, asymmetric threats, and multi-domain operations.</p>
+                    </div>
+                    <div        .classification-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ff0000;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            font-weight: bold;
+            font-size: 12px;
+            z-index: 1001;
+        }
+
+        /* Analysis Dashboard Styles */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .threat-overview-card, .threat-matrix-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .threat-overview-card h3, .threat-matrix-card h3 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+
+        .threat-header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .threat-filters {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .filter-group label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #00ff88;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .threat-filters select {
+            padding: 8px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 12px;
+        }
+
+        .threat-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+            border-radius: 6px;
+            border: 2px solid;
+        }
+
+        .stat-item.critical {
+            border-color: #ff4757;
+            background: rgba(255, 71, 87, 0.1);
+        }
+
+        .stat-item.high {
+            border-color: #ff6348;
+            background: rgba(255, 99, 72, 0.1);
+        }
+
+        .stat-item.moderate {
+            border-color: #ffa502;
+            background: rgba(255, 165, 2, 0.1);
+        }
+
+        .stat-item.low {
+            border-color: #7bed9f;
+            background: rgba(123, 237, 159, 0.1);
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .threat-feed {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .threat-item {
+            padding: 15px;
+            border-left: 4px solid;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+            background: rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .threat-item:hover {
+            background: rgba(0, 0, 0, 0.4);
+            transform: translateX(5px);
+        }
+
+        .threat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .threat-title {
+            font-weight: bold;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .threat-timestamp {
+            font-size: 11px;
+            color: #00ff88;
+            background: rgba(0, 255, 136, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .threat-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .threat-meta span {
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .threat-actor {
+            background: rgba(255, 107, 107, 0.2) !important;
+        }
+
+        .threat-region {
+            background: rgba(78, 205, 196, 0.2) !important;
+        }
+
+        .threat-domain {
+            background: rgba(255, 165, 2, 0.2) !important;
+        }
+
+        .threat-confidence {
+            background: rgba(0, 255, 136, 0.2) !important;
+        }
+
+        .threat-description {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .threat-scores {
+            display: flex;
+            gap: 15px;
+        }
+
+        .score-item {
+            font-size: 11px;
+            font-weight: 500;
+            color: #4ecdc4;
+        }
+
+        .matrix-subtitle {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .threat-matrix {
+            overflow-x: auto;
+            margin-bottom: 15px;
+        }
+
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .matrix-table th,
+        .matrix-table td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .matrix-table th {
+            background: rgba(255, 255, 255, 0.1);
+            font-weight: bold;
+            color: #00ff88;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .actor-name {
+            text-align: left !important;
+            font-weight: 500;
+            color: #4ecdc4;
+        }
+
+        .matrix-cell {
+            width: 40px;
+            height: 35px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 2px auto;
+        }
+
+        .matrix-cell:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .risk-critical { 
+            background: linear-gradient(45deg, #ff4757, #ff3838);
+            color: #fff;
+        }
+        .risk-high { 
+            background: linear-gradient(45deg, #ff6348, #ff5722);
+            color: #fff;
+        }
+        .risk-moderate { 
+            background: linear-gradient(45deg, #ffa502, #ff9500);
+            color: #000;
+        }
+        .risk-low { 
+            background: linear-gradient(45deg, #7bed9f, #5f27cd);
+            color: #fff;
+        }
+
+        .matrix-legend {
+            margin-top: 15px;
+        }
+
+        .matrix-legend h4 {
+            color: #00ff88;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+        }
+
+        .legend-swatch {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+        };
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .threat-item.critical { border-color: #ff4757; background: rgba(255, 71, 87, 0.1); }
+        .threat-item.high { border-color: #ff6348; background: rgba(255, 99, 72, 0.1); }
+        .threat-item.moderate { border-color: #ffa502; background: rgba(255, 165, 2, 0.1); }
+        .threat-item.low { border-color: #7bed9f; background: rgba(123, 237, 159, 0.1); }
+
+        .threat-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .threat-details {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .threat-matrix {
+            overflow-x: auto;
+        }
+
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        .matrix-table th,
+        .matrix-table td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .matrix-table th {
+            background: rgba(255, 255, 255, 0.1);
+            font-weight: bold;
+        }
+
+        .matrix-cell {
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 10px;
+        }
+
+        .risk-critical { background: #ff4757; }
+        .risk-high { background: #ff6348; }
+        .risk-moderate { background: #ffa502; }
+        .risk-low { background: #7bed9f; }
+
+        /* Intelligence Reports */
+        .intel-reports-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .intel-tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .intel-tab, .collab-tab {
+            padding: 10px 20px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .intel-tab.active, .collab-tab.active {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: #000;
+        }
+
+        .intel-content, .collab-content {
+            min-height: 200px;
+        }
+
+        .daily-brief {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .brief-summary {
+            margin: 20px 0;
+        }
+
+        .brief-item {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border-left: 4px solid;
+        }
+
+        .brief-item.critical {
+            border-color: #ff4757;
+            background: rgba(255, 71, 87, 0.1);
+        }
+
+        .brief-item.high {
+            border-color: #ff6348;
+            background: rgba(255, 99, 72, 0.1);
+        }
+
+        .brief-item.moderate {
+            border-color: #ffa502;
+            background: rgba(255, 165, 2, 0.1);
+        }
+
+        .brief-priority {
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-right: 10px;
+        }
+
+        .brief-item.critical .brief-priority {
+            background: #ff4757;
+            color: #fff;
+        }
+
+        .brief-item.high .brief-priority {
+            background: #ff6348;
+            color: #fff;
+        }
+
+        .brief-item.moderate .brief-priority {
+            background: #ffa502;
+            color: #000;
+        }
+
+        .upload-area {
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            border-color: #00ff88;
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .uploaded-files {
+            margin-top: 20px;
+        }
+
+        .uploaded-file {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .report-archive {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .archive-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .archive-classification {
+            background: #ff6b6b;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        /* Geospatial Visualization */
+        .geospatial-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .map-container {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .simulated-map {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background-image: radial-gradient(circle at 30% 40%, rgba(52, 152, 219, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 70% 60%, rgba(231, 76, 60, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 50% 30%, rgba(46, 204, 113, 0.1) 0%, transparent 50%);
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .threat-marker {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transform: translate(-50%, -50%);
+        }
+
+        .threat-marker.critical {
+            background: rgba(255, 71, 87, 0.8);
+        }
+
+        .threat-marker.high {
+            background: rgba(255, 99, 72, 0.8);
+        }
+
+        .threat-marker.moderate {
+            background: rgba(255, 165, 2, 0.8);
+        }
+
+        .marker-pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .threat-marker.critical .marker-pulse {
+            background: rgba(255, 71, 87, 0.3);
+        }
+
+        .threat-marker.high .marker-pulse {
+            background: rgba(255, 99, 72, 0.3);
+        }
+
+        .threat-marker.moderate .marker-pulse {
+            background: rgba(255, 165, 2, 0.3);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .marker-label {
+            position: relative;
+            z-index: 1;
+            font-size: 14px;
+        }
+
+        .map-legend {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-color.critical { background: #ff4757; }
+        .legend-color.high { background: #ff6348; }
+        .legend-color.moderate { background: #ffa502; }
+
+        /* War Game Simulator */
+        .wargame-simulator {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .simulator-controls {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .sim-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .simulation-results {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .sim-result {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .result-metric {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .result-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00ff88;
+        }
+
+        .result-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Historical Doctrine */
+        .doctrine-insights {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .doctrine-search {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .doctrine-search input {
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .doctrine-results {
+            margin-top: 20px;
+        }
+
+        .doctrine-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #00ff88;
+        }
+
+        .doctrine-card h5 {
+            color: #00ff88;
+            margin-bottom: 8px;
+        }
+
+        /* Collaboration Panel */
+        .collaboration-panel {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .collab-tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .activity-feed {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .activity-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .activity-user {
+            font-weight: bold;
+            color: #4ecdc4;
+        }
+
+        .activity-action {
+            flex: 1;
+            margin: 0 15px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .activity-time {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .shared-notes textarea {
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        .task-assignments {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+        }
+
+        .sim-results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .simulation-analysis {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .simulation-analysis h5 {
+            color: #00ff88;
+            margin-bottom: 10px;
+        }
+
+        /* Historical Leaders Styles */
+        .leader-categories {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .category-tab {
+            padding: 12px 20px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .category-tab.active {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: #000;
+        }
+
+        .category-tab:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .leader-category-content {
+            margin-bottom: 30px;
+        }
+
+        .leaders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+        }
+
+        .leader-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 255, 136, 0.2);
+            border-color: #00ff88;
+        }
+
+        .leader-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00ff88, #4ecdc4);
+        }
+
+        .leader-portrait {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .leader-info h3 {
+            color: #00ff88;
+            margin-bottom: 5px;
+            font-size: 20px;
+        }
+
+        .leader-era {
+            color: #4ecdc4;
+            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .leader-specialty {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .leader-principles {
+            margin-bottom: 20px;
+        }
+
+        .principle {
+            display: block;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 6px;
+            font-size: 12px;
+            border-left: 3px solid #ffa502;
+            color: #ffc107;
+            font-style: italic;
+        }
+
+        .modern-applications {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .modern-applications h4 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .modern-applications ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .modern-applications li {
+            padding: 4px 0;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .modern-applications li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #00ff88;
+            font-size: 10px;
+        }
+
+        /* Leader Consultation */
+        .leader-consultation {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 30px;
+        }
+
+        .leader-consultation h3 {
+            color: #00ff88;
+            margin-bottom: 15px;
+        }
+
+        .selected-leader {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .leader-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #00ff88, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .leader-details h4 {
+            color: #00ff88;
+            margin-bottom: 5px;
+        }
+
+        .leader-details p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+            margin: 0;
+        }
+
+        .consultation-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .consultation-input input {
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .consultation-input input:focus {
+            outline: none;
+            border-color: #00ff88;
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .consultation-result {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid #00ff88;
+        }
+
+        .consultation-result h4 {
+            color: #00ff88;
+            margin-bottom: 10px;
+        }
+
+        .consultation-result p {
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .leaders-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .leader-categories {
+                flex-direction: column;
+            }
+            
+            .consultation-input {
+                flex-direction: column;
+            }
+            
+            .consultation-input input {
+                width: 100%;
+            }
+        }<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warfare Chronicles - Strategic Analysis Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Ensure proper display hierarchy */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Fix classification banner z-index */
+        .classification-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ff0000;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            font-weight: bold;
+            font-size: 12px;
+            z-index: 1001;
+            height: 25px;
+        }
+
+        /* Adjust header positioning */
+        .header {
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 25px;
+            z-index: 100;
+            margin-top: 25px;
+        }
+
+        /* Fix main app container */
+        #mainApp {
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        /* Ensure login screen covers full viewport */
+        .login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 1000;
+        }
+
+        /* Header - only show when logged in */
+        .header {
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 25px;
+            z-index: 100;
+            margin-top: 25px;
+        }
+
+        /* Classification banner - controlled display */
+        .classification-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ff0000;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            font-weight: bold;
+            font-size: 12px;
+            z-index: 1001;
+            height: 25px;
+        }
+
+        /* Security badge - controlled display */
+        .security-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #00ff88;
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-size: 12px;
+            color: #00ff88;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00ff88;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-badge {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 255, 136, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-danger {
+            background: linear-gradient(45deg, #ff4757, #ff3838);
+            color: #fff;
+        }
+
+        /* Login Screen - Complete Coverage */
+        #loginScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        #loginScreen.hidden {
+            display: none !important;
+        }
+
+        /* Ensure main app is completely hidden when login is shown */
+        #mainApp {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        #mainApp.hidden {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        /* Classification banner - lower z-index when login is shown */
+        .classification-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ff0000;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            font-weight: bold;
+            font-size: 12px;
+            z-index: 10000;
+            height: 25px;
+        }
+
+        /* Security badge - hide when login is shown */
+        .security-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #00ff88;
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-size: 12px;
+            color: #00ff88;
+            z-index: 1000;
+        }
+
+        /* Hide security badge on login */
+        #loginScreen ~ * .security-badge {
+            display: none;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #00ff88;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+
+        .login-header p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #00ff88;
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .security-notice {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #ffc107;
+        }
+
+        .error-message {
+            background: rgba(255, 71, 87, 0.1);
+            border: 1px solid rgba(255, 71, 87, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #ff4757;
+        }
+
+        /* Main Dashboard */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 20px;
+            padding: 20px 0;
+            min-height: calc(100vh - 80px);
+        }
+
+        .sidebar {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: fit-content;
+        }
+
+        .sidebar-section {
+            margin-bottom: 25px;
+        }
+
+        .sidebar-section h3 {
+            color: #00ff88;
+            margin-bottom: 15px;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-item {
+            padding: 12px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 8px;
+            border: 1px solid transparent;
+        }
+
+        .sidebar-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar-item.active {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: #000;
+            font-weight: 500;
+        }
+
+        .main-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Chat Interface */
+        .chat-container {
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .message {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 12px;
+            max-width: 85%;
+            word-wrap: break-word;
+        }
+
+        .message.user {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message.ai {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: #000;
+            border-bottom-left-radius: 4px;
+        }
+
+        .message .sender {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .message .content {
+            line-height: 1.6;
+        }
+
+        .message .timestamp {
+            font-size: 11px;
+            opacity: 0.7;
+            margin-top: 8px;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .chat-input input:focus {
+            outline: none;
+            border-color: #00ff88;
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .chat-input input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .admin-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-card h3 {
+            color: #00ff88;
+            margin-bottom: 15px;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        /* Scenario Builder */
+        .scenario-builder {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .scenario-builder h3 {
+            color: #00ff88;
+            margin-bottom: 20px;
+        }
+
+        .scenario-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .scenario-form .form-group {
+            margin-bottom: 15px;
+        }
+
+        .scenario-form select,
+        .scenario-form textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .scenario-form textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .scenario-form .full-width {
+            grid-column: span 2;
+        }
+
+        /* Audit Log */
+        .audit-log {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .audit-entry {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 13px;
+        }
+
+        .audit-entry:last-child {
+            border-bottom: none;
+        }
+
+        .audit-timestamp {
+            color: #00ff88;
+            font-weight: 500;
+        }
+
+        .audit-user {
+            color: #4ecdc4;
+            font-weight: 500;
+        }
+
+        .audit-action {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: 2;
+            }
+            
+            .main-content {
+                order: 1;
+            }
+            
+            .scenario-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .admin-panel {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #00ff88;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Security Badge */
+        .security-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #00ff88;
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-size: 12px;
+            color: #00ff88;
+            z-index: 1000;
+        }
+
+        .classification-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ff0000;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            font-weight: bold;
+            font-size: 12px;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <!-- Classification Banner -->
+    <div class="classification-banner" id="classificationBanner">
+        UNCLASSIFIED//FOR OFFICIAL USE ONLY
+    </div>
+
+    <!-- Security Badge -->
+    <div class="security-badge" id="securityBadge">
+        🔒 SECURED
+    </div>
+
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-container">
+            <div class="login-header">
+                <h1>⚔️ WARFARE CHRONICLES</h1>
+                <p>Strategic Analysis Platform</p>
+            </div>
+            
+            <div class="security-notice">
+                <strong>SECURITY NOTICE:</strong> This system is restricted to authorized personnel only. Access requires .gov or .mil credentials. All activities are monitored and logged.
+            </div>
+            
+            <div id="errorMessage" class="error-message hidden">
+                Invalid credentials. Access denied.
+            </div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="user@agency.gov" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter secure password" required>
+                </div>
+                
+                <button type="button" class="btn btn-primary" style="width: 100%;" onclick="login()">
+                    <span id="loginText">Authenticate</span>
+                    <span id="loginLoading" class="loading hidden"></span>
+                </button>
+            </form>
+            
+            <div style="margin-top: 20px; font-size: 12px; color: rgba(255,255,255,0.6); text-align: center;">
+                <strong>Demo Credentials:</strong><br>
+                demo@gov.mil / DemoUser123<br>
+                admin@dod.gov / SecurePass123!
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="mainApp" class="hidden">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">⚔️ WARFARE CHRONICLES</div>
+                    <div class="user-info">
+                        <div class="user-badge" id="userBadge">Unknown User</div>
+                        <button class="btn btn-secondary" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard -->
+        <div class="container">
+            <div class="dashboard">
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <div class="sidebar-section">
+                        <h3>Operations</h3>
+                        <div class="sidebar-item active" onclick="showSection('chat')">
+                            💬 Strategic Chat
+                        </div>
+                        <div class="sidebar-item" onclick="showSection('scenario')">
+                            🎯 Scenario Builder
+                        </div>
+                        <div class="sidebar-item" onclick="showSection('analysis')">
+                            📊 Analysis Dashboard
+                        </div>
+                        <div class="sidebar-item" onclick="showSection('historical')">
+                            🏛️ Historical Leaders
+                        </div>
+                        <div class="sidebar-item" onclick="showSection('external')">
+                            🔗 External Resources
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3>Administration</h3>
+                        <div class="sidebar-item" onclick="showSection('admin')">
+                            👥 User Management
+                        </div>
+                        <div class="sidebar-item" onclick="showSection('audit')">
+                            📋 Audit Logs
+                        </div>
+                        <div class="sidebar-item" onclick="showSection('settings')">
+                            ⚙️ System Settings
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3>Intelligence</h3>
+                        <div class="sidebar-item" onclick="showSection('threats')">
+                            🚨 Threat Assessment
+                        </div>
+                        <div class="sidebar-item" onclick="showSection('reports')">
+                            📄 Intelligence Reports
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="main-content">
+                    <!-- Chat Section -->
+                    <div id="chatSection" class="content-section">
+                        <h2>Strategic Analysis Chat</h2>
+                        <p style="margin-bottom: 20px; color: rgba(255, 255, 255, 0.7);">
+                            Engage with AI-powered strategic analysis using historical military doctrines and modern warfare concepts.
+                        </p>
+                        
+                        <div class="chat-container">
+                            <div class="chat-messages" id="chatMessages">
+                                <div class="message ai">
+                                    <div class="sender">Warfare Chronicles AI</div>
+                                    <div class="content">
+                                        Greetings, Commander. I am Warfare Chronicles, your strategic analysis AI. I can simulate military scenarios, analyze historical doctrines, and provide strategic assessments based on the wisdom of legendary commanders like Patton, Sun Tzu, and Eisenhower applied to modern warfare.
+                                        
+                                        How may I assist with your strategic analysis today?
+                                    </div>
+                                    <div class="timestamp">System initialized - Ready for operations</div>
+                                </div>
+                            </div>
+                            
+                            <div class="chat-input">
+                                <input type="text" id="chatInput" placeholder="Enter your strategic query..." maxlength="500">
+                                <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scenario Builder -->
+                    <div id="scenarioSection" class="content-section hidden">
+                        <h2>Scenario Builder</h2>
+                        <p style="margin-bottom: 20px; color: rgba(255, 255, 255, 0.7);">
+                            Create custom military scenarios for strategic analysis and wargaming simulations.
+                        </p>
+                        
+                        <div class="scenario-builder">
+                            <h3>New Scenario Configuration</h3>
+                            <form class="scenario-form" id="scenarioForm">
+                                <div class="form-group">
+                                    <label for="scenarioName">Scenario Name</label>
+                                    <input type="text" id="scenarioName" placeholder="Operation Codename">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="threatLevel">Threat Level</label>
+                                    <select id="threatLevel">
+                                        <option value="low">Low - Peacekeeping</option>
+                                        <option value="medium">Medium - Regional Conflict</option>
+                                        <option value="high">High - Major Theater War</option>
+                                        <option value="critical">Critical - Global Conflict</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="theater">Theater of Operations</label>
+                                    <select id="theater">
+                                        <option value="europe">European Theater</option>
+                                        <option value="pacific">Pacific Theater</option>
+                                        <option value="middle-east">Middle East</option>
+                                        <option value="arctic">Arctic Region</option>
+                                        <option value="cyber">Cyber Domain</option>
+                                        <option value="space">Space Domain</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="commander">Historical Commander Perspective</label>
+                                    <select id="commander">
+                                        <option value="patton">General Patton - Aggressive Tactics</option>
+                                        <option value="eisenhower">General Eisenhower - Strategic Coordination</option>
+                                        <option value="macarthur">General MacArthur - Bold Maneuvers</option>
+                                        <option value="sun-tzu">Sun Tzu - Ancient Wisdom</option>
+                                        <option value="clausewitz">Carl von Clausewitz - Strategic Theory</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group full-width">
+                                    <label for="scenarioDescription">Scenario Description</label>
+                                    <textarea id="scenarioDescription" placeholder="Describe the strategic situation, enemy forces, objectives, and constraints..."></textarea>
+                                </div>
+                                
+                                <div class="form-group full-width">
+                                    <button type="button" class="btn btn-primary" onclick="generateScenario()">Generate Scenario</button>
+                                    <button type="button" class="btn btn-secondary" onclick="clearScenario()">Clear Form</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Admin Panel -->
+                    <div id="adminSection" class="content-section hidden">
+                        <h2>Administration Dashboard</h2>
+                        <p style="margin-bottom: 20px; color: rgba(255, 255, 255, 0.7);">
+                            Monitor system activity, manage users, and oversee platform operations.
+                        </p>
+                        
+                        <div class="admin-panel">
+                            <div class="admin-card">
+                                <h3>Active Users</h3>
+                                <div class="stat-number">24</div>
+                                <div class="stat-label">Currently Online</div>
+                            </div>
+                            
+                            <div class="admin-card">
+                                <h3>Scenarios Generated</h3>
+                                <div class="stat-number">156</div>
+                                <div class="stat-label">This Month</div>
+                            </div>
+                            
+                            <div class="admin-card">
+                                <h3>System Status</h3>
+                                <div class="stat-number">99.7%</div>
+                                <div class="stat-label">Uptime</div>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-card">
+                            <h3>User Management</h3>
+                            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                                <button class="btn btn-primary">Add User</button>
+                                <button class="btn btn-secondary">Export Users</button>
+                                <button class="btn btn-danger">Revoke Access</button>
+                            </div>
+                            <p style="color: rgba(255, 255, 255, 0.7); font-size: 14px;">
+                                Manage user access, permissions, and authentication settings.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Audit Logs -->
+                    <div id="auditSection" class="content-section hidden">
+                        <h2>Audit Log</h2>
+                        <p style="margin-bottom: 20px; color: rgba(255, 255, 255, 0.7);">
+                            Complete audit trail of all system activities and user interactions.
+                        </p>
+                        
+                        <div class="audit-log" id="auditLog">
+                            <div class="audit-entry">
+                                <span class="audit-timestamp">2025-07-18 14:32:15</span> - 
+                                <span class="audit-user">admin@dod.gov</span> - 
+                                <span class="audit-action">Login successful from 192.168.1.100</span>
+                            </div>
+                            <div class="audit-entry">
+                                <span class="audit-timestamp">2025-07-18 14:30:42</span> - 
+                                <span class="audit-user">analyst@army.mil</span> - 
+                                <span class="audit-action">Generated scenario: Pacific Theater Analysis</span>
+                            </div>
+                            <div class="audit-entry">
+                                <span class="audit-timestamp">2025-07-18 14:28:13</span> - 
+                                <span class="audit-user">commander@navy.mil</span> - 
+                                <span class="audit-action">Accessed Strategic Chat - Query: NATO response strategies</span>
+                            </div>
+                            <div class="audit-entry">
+                                <span class="audit-timestamp">2025-07-18 14:25:56</span> - 
+                                <span class="audit-user">intel@cia.gov</span> - 
+                                <span class="audit-action">Exported analysis report - ID: RPT-2025-001</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Analysis Dashboard -->
+                    <div id="analysisSection" class="content-section hidden">
+                        <h2>Analysis Dashboard</h2>
+                        <p style="margin-bottom: 20px; color: rgba(255, 255, 255, 0.7);">
+                            Comprehensive strategic intelligence platform with real-time threat assessment and AI-powered analysis.
+                        </p>
+
+                        <!-- Threat Assessment Overview -->
+                        <div class="dashboard-grid">
+                            <div class="threat-overview-card">
+                                <div class="threat-header-section">
+                                    <h3>🚨 Live Global Threat Feed</h3>
+                                    <button class="btn btn-secondary btn-sm" onclick="refreshThreatData()">🔄 Refresh</button>
+                                </div>
+                                
+                                <div class="threat-filters">
+                                    <div class="filter-group">
+                                        <label>Region:</label>
+                                        <select id="regionFilter" onchange="filterThreats()">
+                                            <option value="all">All Regions</option>
+                                            <option value="pacific">Indo-Pacific</option>
+                                            <option value="europe">Europe/NATO</option>
+                                            <option value="middleeast">Middle East</option>
+                                            <option value="arctic">Arctic</option>
+                                            <option value="cyber">Global/Cyber</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="filter-group">
+                                        <label>Actor Type:</label>
+                                        <select id="actorFilter" onchange="filterThreats()">
+                                            <option value="all">All Actors</option>
+                                            <option value="nation">Nation-State</option>
+                                            <option value="terrorist">Terrorist Groups</option>
+                                            <option value="cyber">Cyber Groups</option>
+                                            <option value="proxy">Proxy Forces</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="filter-group">
+                                        <label>Confidence:</label>
+                                        <select id="confidenceFilter" onchange="filterThreats()">
+                                            <option value="all">All Levels</option>
+                                            <option value="high">High Confidence</option>
+                                            <option value="medium">Medium Confidence</option>
+                                            <option value="low">Low Confidence</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="threat-stats">
+                                    <div class="stat-item critical">
+                                        <span class="stat-number" id="criticalCount">0</span>
+                                        <span class="stat-label">Critical</span>
+                                    </div>
+                                    <div class="stat-item high">
+                                        <span class="stat-number" id="highCount">0</span>
+                                        <span class="stat-label">High</span>
+                                    </div>
+                                    <div class="stat-item moderate">
+                                        <span class="stat-number" id="moderateCount">0</span>
+                                        <span class="stat-label">Moderate</span>
+                                    </div>
+                                    <div class="stat-item low">
+                                        <span class="stat-number" id="lowCount">0</span>
+                                        <span class="stat-label">Low</span>
+                                    </div>
+                                </div>
+                                
+                                <div id="threatFeed" class="threat-feed">
+                                    <!-- Threats will be dynamically populated -->
+                                </div>
+                            </div>
+
+                            <div class="threat-matrix-card">
+                                <h3>🎯 Threat Assessment Matrix</h3>
+                                <p class="matrix-subtitle">Likelihood × Severity Analysis by Actor and Domain</p>
+                                <div class="threat-matrix" id="threatMatrix">
+                                    <!-- Matrix will be populated dynamically -->
+                                </div>
+                                
+                                <div class="matrix-legend">
+                                    <h4>Risk Score Legend:</h4>
+                                    <div class="legend-grid">
+                                        <div class="legend-item"><span class="legend-swatch risk-critical"></span> Critical (80-100)</div>
+                                        <div class="legend-item"><span class="legend-swatch risk-high"></span> High (65-79)</div>
+                                        <div class="legend-item"><span class="legend-swatch risk-moderate"></span> Moderate (40-64)</div>
+                                        <div class="legend-item"><span class="legend-swatch risk-low"></span> Low (0-39)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Intelligence Reports Module -->
+                        <div class="intel-reports-section">
+                            <h3>📊 Intelligence Reports</h3>
+                            <div class="intel-tabs">
+                                <button class="intel-tab active" onclick="showIntelTab('daily')">Daily Briefs</button>
+                                <button class="intel-tab" onclick="showIntelTab('upload')">Upload & Analyze</button>
+                                <button class="intel-tab" onclick="showIntelTab('archive')">Report Archive</button>
+                            </div>
+
+                            <div id="dailyIntel" class="intel-content">
+                                <div class="daily-brief">
+                                    <h4>Strategic Intelligence Brief - July 19, 2025</h4>
+                                    <div class="brief-summary">
+                                        <div class="brief-item critical">
+                                            <span class="brief-priority">CRITICAL</span>
+                                            <span class="brief-text">Increased naval activity in South China Sea - 15 PLAN vessels detected near Second Thomas Shoal</span>
+                                        </div>
+                                        <div class="brief-item high">
+                                            <span class="brief-priority">HIGH</span>
+                                            <span class="brief-text">Russian air defense systems repositioning near Kaliningrad - Potential NATO exercise response</span>
+                                        </div>
+                                        <div class="brief-item moderate">
+                                            <span class="brief-priority">MODERATE</span>
+                                            <span class="brief-text">Iran conducting missile tests in Strait of Hormuz - Standard quarterly exercises observed</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" onclick="generateDetailedBrief()">Generate Detailed Analysis</button>
+                                </div>
+                            </div>
+
+                            <div id="uploadIntel" class="intel-content hidden">
+                                <div class="upload-section">
+                                    <div class="upload-area" onclick="document.getElementById('fileUpload').click()">
+                                        <div class="upload-icon">📄</div>
+                                        <p>Upload Intelligence Reports</p>
+                                        <small>PDF, DOCX, TXT files supported</small>
+                                        <input type="file" id="fileUpload" hidden multiple accept=".pdf,.docx,.txt" onchange="handleFileUpload(event)">
+                                    </div>
+                                    <div id="uploadedFiles" class="uploaded-files"></div>
+                                </div>
+                            </div>
+
+                            <div id="archiveIntel" class="intel-content hidden">
+                                <div class="report-archive">
+                                    <div class="archive-item">
+                                        <span class="archive-date">2025-07-18</span>
+                                        <span class="archive-title">Pacific Theater Assessment - Q3 2025</span>
+                                        <span class="archive-classification">SECRET//NOFORN</span>
+                                        <button class="btn btn-secondary btn-sm">View</button>
+                                    </div>
+                                    <div class="archive-item">
+                                        <span class="archive-date">2025-07-17</span>
+                                        <span class="archive-title">Cyber Threat Analysis - Eastern Europe</span>
+                                        <span class="archive-classification">CONFIDENTIAL</span>
+                                        <button class="btn btn-secondary btn-sm">View</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Geospatial Visualization -->
+                        <div class="geospatial-section">
+                            <h3>🌍 Geospatial Intelligence</h3>
+                            <div class="map-container">
+                                <div class="simulated-map">
+                                    <div class="map-overlay">
+                                        <div class="threat-marker critical" style="top: 35%; left: 75%;" data-threat="South China Sea Tensions">
+                                            <span class="marker-pulse"></span>
+                                            <span class="marker-label">🚢</span>
+                                        </div>
+                                        <div class="threat-marker high" style="top: 20%; left: 55%;" data-threat="Eastern European Border Activity">
+                                            <span class="marker-pulse"></span>
+                                            <span class="marker-label">⚔️</span>
+                                        </div>
+                                        <div class="threat-marker moderate" style="top: 40%; left: 50%;" data-threat="Middle East Exercises">
+                                            <span class="marker-pulse"></span>
+                                            <span class="marker-label">🎯</span>
+                                        </div>
+                                    </div>
+                                    <div class="map-legend">
+                                        <div class="legend-item">
+                                            <span class="legend-color critical"></span>
+                                            <span>Critical Threats</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <span class="legend-color high"></span>
+                                            <span>High Priority</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <span class="legend-color moderate"></span>
+                                            <span>Moderate Risk</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Red Team / Blue Team Simulator -->
+                        <div class="wargame-simulator">
+                            <h3>⚔️ Red Team / Blue Team Simulator</h3>
+                            <div class="simulator-controls">
+                                <div class="sim-row">
+                                    <div class="form-group">
+                                        <label>Conflict Theater</label>
+                                        <select id="simTheater">
+                                            <option value="pacific">Pacific - Taiwan Strait</option>
+                                            <option value="baltic">Baltic States</option>
+                                            <option value="korean">Korean Peninsula</option>
+                                            <option value="middle-east">Persian Gulf</option>
+                                            <option value="cyber">Cyber Domain</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Primary Adversary</label>
+                                        <select id="simAdversary">
+                                            <option value="china">People's Republic of China</option>
+                                            <option value="russia">Russian Federation</option>
+                                            <option value="iran">Islamic Republic of Iran</option>
+                                            <option value="north-korea">Democratic People's Republic of Korea</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Conflict Type</label>
+                                        <select id="simType">
+                                            <option value="conventional">Conventional Warfare</option>
+                                            <option value="hybrid">Hybrid Warfare</option>
+                                            <option value="cyber">Cyber Operations</option>
+                                            <option value="limited">Limited Engagement</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary" onclick="runWarGameSimulation()">🎮 Run Simulation</button>
+                            </div>
+                            <div id="simulationResults" class="simulation-results hidden">
+                                <!-- Results will be populated dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Historical Doctrine Insights -->
+                        <div class="doctrine-insights">
+                            <h3>📚 Historical War Doctrine Analysis</h3>
+                            <div class="doctrine-search">
+                                <input type="text" id="doctrineSearch" placeholder="Search doctrines... e.g., 'Blitzkrieg tactics for urban warfare'" style="width: 70%;">
+                                <button class="btn btn-primary" onclick="searchDoctrine()">Analyze</button>
+                            </div>
+                            <div id="doctrineResults" class="doctrine-results">
+                                <div class="doctrine-example">
+                                    <h4>🏛️ Classical Military Principles</h4>
+                                    <div class="doctrine-card">
+                                        <h5>Sun Tzu's Art of War → Modern Cyber Warfare</h5>
+                                        <p>"All warfare is based on deception" - applies directly to cyber operations through misdirection, false flags, and attribution masking.</p>
+                                    </div>
+                                    <div class="doctrine-card">
+                                        <h5>Clausewitz's Fog of War → Information Warfare</h5>
+                                        <p>Modern "fog of war" includes information overload, deepfakes, and social media manipulation campaigns.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- User Activity & Collaboration Panel -->
+                        <div class="collaboration-panel">
+                            <h3>👥 Analyst Collaboration</h3>
+                            <div class="collab-tabs">
+                                <button class="collab-tab active" onclick="showCollabTab('activity')">Team Activity</button>
+                                <button class="collab-tab" onclick="showCollabTab('notes')">Shared Notes</button>
+                                <button class="collab-tab" onclick="showCollabTab('tasks')">Task Assignments</button>
+                            </div>
+                            
+                            <div id="activityCollab" class="collab-content">
+                                <div class="activity-feed">
+                                    <div class="activity-item">
+                                        <span class="activity-user">LTC Johnson</span>
+                                        <span class="activity-action">completed Pacific Theater analysis</span>
+                                        <span class="activity-time">12 minutes ago</span>
+                                    </div>
+                                    <div class="activity-item">
+                                        <span class="activity-user">Analyst Martinez</span>
+                                        <span class="activity-action">uploaded SIGINT report for review</span>
+                                        <span class="activity-time">34 minutes ago</span>
+                                    </div>
+                                    <div class="activity-item">
+                                        <span class="activity-user">CDR Wilson</span>
+                                        <span class="activity-action">ran Red Team simulation - Taiwan Strait</span>
+                                        <span class="activity-time">1 hour ago</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="notesCollab" class="collab-content hidden">
+                                <div class="shared-notes">
+                                    <textarea placeholder="Add shared analysis notes..." rows="4" style="width: 100%; margin-bottom: 10px;"></textarea>
+                                    <button class="btn btn-primary">Save Note</button>
+                                </div>
+                            </div>
+
+                            <div id="tasksCollab" class="collab-content hidden">
+                                <div class="task-assignments">
+                                    <div class="task-item">
+                                        <input type="checkbox" checked>
+                                        <span>Review Q3 Pacific Fleet positioning - Assigned to Martinez</span>
+                                        <span class="task-due">Due: 07/20/2025</span>
+                                    </div>
+                                    <div class="task-item">
+                                        <input type="checkbox">
+                                        <span>Update NATO Article 5 response protocols - Assigned to Johnson</span>
+                                        <span class="task-due">Due: 07/25/2025</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="settingsSection" class="content-section hidden">
+                        <h2>System Settings</h2>
+                        <p>Configure system parameters and security settings.</p>
+                    </div>
+                    
+                    <div id="threatsSection" class="content-section hidden">
+                        <h2>Threat Assessment</h2>
+                        <p>Real-time threat analysis and intelligence briefings.</p>
+                    </div>
+                    
+                    <!-- Historical Leaders Section -->
+                    <div id="historicalSection" class="content-section hidden">
+                        <h2>Historical Military Leaders</h2>
+                        <p style="margin-bottom: 30px; color: rgba(255, 255, 255, 0.7);">
+                            Study the doctrines and strategies of history's greatest military minds and apply their wisdom to modern warfare scenarios.
+                        </p>
+
+                        <!-- Leader Categories -->
+                        <div class="leader-categories">
+                            <button class="category-tab active" onclick="showLeaderCategory('ancient')">Ancient Warriors</button>
+                            <button class="category-tab" onclick="showLeaderCategory('modern')">Modern Generals</button>
+                            <button class="category-tab" onclick="showLeaderCategory('naval')">Naval Commanders</button>
+                            <button class="category-tab" onclick="showLeaderCategory('airforce')">Air Force Leaders</button>
+                            <button class="category-tab" onclick="showLeaderCategory('special')">Special Operations</button>
+                        </div>
+
+                        <!-- Ancient Warriors -->
+                        <div id="ancientLeaders" class="leader-category-content">
+                            <div class="leaders-grid">
+                                <div class="leader-card" onclick="selectLeader('sun-tzu')">
+                                    <div class="leader-portrait">🏛️</div>
+                                    <div class="leader-info">
+                                        <h3>Sun Tzu</h3>
+                                        <p class="leader-era">Ancient China (544-496 BC)</p>
+                                        <p class="leader-specialty">Strategic Philosophy & Deception</p>
+                                        <div class="leader-principles">
+                                            <span class="principle">"All warfare is based on deception"</span>
+                                            <span class="principle">Know yourself and your enemy</span>
+                                            <span class="principle">Win without fighting</span>
+                                        </div>
+                                        <div class="modern-applications">
+                                            <h4>Modern Applications:</h4>
+                                            <ul>
+                                                <li>Cyber warfare & information operations</li>
+                                                <li>Intelligence gathering & OSINT</li>
+                                                <li>Asymmetric warfare tactics</li>
+                                                <li>Psychological operations</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="leader-card" onclick="selectLeader('alexander')">
+                                    <div class="leader-portrait">👑</div>
+                                    <div class="leader-info">
+                                        <h3>Alexander the Great</h3>
+                                        <p class="leader-era">Macedon (356-323 BC)</p>
+                                        <p class="leader-specialty">Rapid Maneuver & Combined Arms</p>
+                                        <div class="leader-principles">
+                                            <span class="principle">Speed and surprise</span>
+                                            <span class="principle">Lead from the front</span>
+                                            <span class="principle">Adapt to local conditions</span>
+                                        </div>
+                                        <div class="modern-applications">
+                                            <h4>Modern Applications:</h4>
+                                            <ul>
+                                                <li>Rapid deployment forces</li>
+                                                <li>Multi-domain operations</li>
+                                                <li>Coalition warfare</li>
+                                                <li>Expeditionary operations</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="leader-card" onclick="selectLeader('hannibal')">
+                                    <div class="leader-portrait">🐘</div>
+                                    <div class="leader-info">
+                                        <h3>Hannibal Barca</h3>
+                                        <p class="leader-era">Carthage (247-183 BC)</p>
+                                        <p class="leader-specialty">Tactical Innovation & Logistics</p>
+                                        <div class="leader-principles">
+                                            <span class="principle">Double envelopment tactics</span>
+                                            <span class="principle">Strategic mobility</span>
+                                            <span class="principle">Psychological warfare</span>
+                                        </div>
+                                        <div class="modern-applications">
+                                            <h4>Modern Applications:</h4>
+                                            <ul>
+                                                <li>Pincer movements in modern warfare</li>
+                                                <li>Long-range strategic operations</li>
+                                                <li>Supply line disruption</li>
+                                                <li>Unconventional approaches</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modern Generals -->
+                        <div id="modernLeaders" class="leader-category-content hidden">
+                            <div class="leaders-grid">
+                                <div class="leader-card" onclick="selectLeader('patton')">
+                                    <div class="leader-portrait">⭐</div>
+                                    <div class="leader-info">
+                                        <h3>General George S. Patton</h3>
+                                        <p class="leader-era">USA (1885-1945)</p>
+                                        <p class="leader-specialty">Armored Warfare & Aggressive Tactics</p>
+                                        <div class="leader-principles">
+                                            <span class="principle">"Lead me, follow me, or get out of my way"</span>
+                                            <span class="principle">Speed and violence of action</span>
+                                            <span class="principle">Relentless pursuit</span>
+                                        </div>
+                                        <div class="modern-applications">
+                                            <h4>Modern Applications:</h4>
+                                            <ul>
+                                                <li>Rapid mechanized advances</li>
+                                                <li>Combined arms operations</li>
+                                                <li>Pursuit operations</li>
+                                                <li>Decisive leadership in crisis</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="leader-card" onclick="selectLeader('eisenhower')">
+                                    <div class="leader-portrait">🎖️</div>
+                                    <div class="leader-info">
+                                        <h3>General Dwight D. Eisenhower</h3>
+                                        <p class="leader-era">USA (1890-1969)</p>
+                                        <p class="leader-specialty">Coalition Warfare & Strategic Planning</p>
+                                        <div class="leader-principles">
+                                            <span class="principle">Plans are nothing, planning is everything</span>
+                                            <span class="principle">Alliance coordination</span>
+                                            <span class="principle">Strategic patience</span>
+                                        </div>
+                                        <div class="modern-applications">
+                                            <h4>Modern Applications:</h4>
+                                            <ul>
+                                                <li>NATO operations coordination</li>
+                                                <li>Joint task force management</li>
+                                                <li>Strategic nuclear doctrine</li>
+                                                <li>Multinational coalition building</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="leader-card" onclick="selectLeader('rommel')">
+                                    <div class="leader-portrait">🦊</div>
+                                    <div class="leader-info">
+                                        <h3>Field Marshal Erwin Rommel</h3>
+                                        <p class="leader-era">Germany (1891-1944)</p>
+                                        <p class="leader-specialty">Desert Warfare & Tactical Innovation</p>
+                                        <div class="leader-principles">
+                                            <span class="principle">Be an example to your men</span>
+                                            <span class="principle">Improvise and adapt</span>
+                                            <span class="principle">Strike where unexpected</span>
+                                        </div>
+                                        <div class="modern-applications">
+                                            <h4>Modern Applications:</h4>
+                                            <ul>
+                                                <li>Desert and arid warfare</li>
+                                                <li>Mobile defense tactics</li>
+                                                <li>Adaptive leadership</li>
+                                                <li>Resource efficiency</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Naval Commanders -->
+                        <div id="navalLeaders" class="leader-category-content hidden">
+                            <div class="leaders-grid">
+                                <div class="leader-card" onclick="selectLeader('nelson')">
+                                    <div class="leader-portrait">⚓</div>
+                                    <div class="leader-info">
+                                        <h3>Admiral Horatio Nelson</h3>
+                                        <p class="leader-era">Royal Navy (1758-1805)</p>
+                                        <p class="leader-specialty">Naval Tactics & Bold Leadership</p>
+                                        <div class="leader-principles">
+                                            <span class="principle">England expects every man to do his duty</span>
+                                            <span class="principle">Break the enemy line</span>
+                                            <span class="principle">Decisive engagement</span>
+                                        </div>
+                                        <div class="modern-applications">
+                                            <h4>Modern Applications:</h4>
+                                            <ul>
+                                                <li>Carrier strike group tactics</li>
+                                                <li>Naval battle management</li>
+                                                <li>Sea control operations</li>
+                                                <li>Maritime superiority doctrine</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="leader-card" onclick="selectLeader('nimitz')">
+                                    <div class="leader-portrait">🚢</div>
+                                    <div class="leader-info">
+                                        <h3>Admiral Chester W. Nimitz</h3>
+                                        <p class="leader-era">US Navy (1885-1966)</p>
+                                        <p class="leader-specialty">Pacific Theater & Carrier Operations</p>
+                                        <div class="leader-principles">
+                                            <span class="principle">God grant me the courage not to give up</span>
+                                            <span class="principle">Island-hopping strategy</span>
+                                            <span class="principle">Naval aviation integration</span>
+                                        </div>
+                                        <div class="modern-applications">
+                                            <h4>Modern Applications:</h4>
+                                            <ul>
+                                                <li>Pacific Fleet operations</li>
+                                                <li>Power projection across oceans</li>
+                                                <li>Joint naval-air operations</li>
+                                                <li>Strategic island control</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Air Force Leaders -->
+                        <div id="airforceLeaders" class="leader-category-content hidden">
+                            <div class="leaders-grid">
+                                <div class="leader-card" onclick="selectLeader('mitchell')">
+                                    <div class="leader-portrait">✈️</div>
+                                    <div class="leader-info">
+                                        <h3>General Billy Mitchell</h3>
+                                        <p class="leader-era">US Army Air Service (1879-1936)</p>
+                                        <p class="leader-specialty">Air Power Theory & Strategic Bombing</p>
+                                        <div class="leader-principles">
+                                            <span class="principle">Air power will dominate future warfare</span>
+                                            <span class="principle">Strategic bombing theory</span>
+                                            <span class="principle">Independent air force</span>
+                                        </div>
+                                        <div class="modern-applications">
+                                            <h4>Modern Applications:</h4>
+                                            <ul>
+                                                <li>Strategic air campaigns</li>
+                                                <li>Air superiority doctrine</li>
+                                                <li>Deep strike operations</li>
+                                                <li>Multi-domain integration</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="leader-card" onclick="selectLeader('yeager')">
+                                    <div class="leader-portrait">🛩️</div>
+                                    <div class="leader-info">
+                                        <h3>General Chuck Yeager</h3>
+                                        <p class="leader-era">US Air Force (1923-2020)</p>
+                                        <p class="leader-specialty">Test Pilot & Fighter Tactics</p>
+                                        <div class="leader-principles">
+                                            <span class="principle">You don't concentrate on risks</span>
+                                            <span class="principle">Push the envelope</span>
+                                            <span class="principle">Master your machine</span>
+                                        </div>
+                                        <div class="modern-applications">
+                                            <h4>Modern Applications:</h4>
+                                            <ul>
+                                                <li>Advanced fighter tactics</li>
+                                                <li>Technology integration</li>
+                                                <li>Pilot training evolution</li>
+                                                <li>Aerospace innovation</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Special Operations -->
+                        <div id="specialLeaders" class="leader-category-content hidden">
+                            <div class="leaders-grid">
+                                <div class="leader-card" onclick="selectLeader('stirling')">
+                                    <div class="leader-portrait">🎯</div>
+                                    <div class="leader-info">
+                                        <h3>Colonel David Stirling</h3>
+                                        <p class="leader-era">British SAS (1915-1990)</p>
+                                        <p class="leader-specialty">Special Forces & Behind Enemy Lines</p>
+                                        <div class="leader-principles">
+                                            <span class="principle">Who dares wins</span>
+                                            <span class="principle">Small unit tactics</span>
+                                            <span class="principle">Strategic impact</span>
+                                        </div>
+                                        <div class="modern-applications">
+                                            <h4>Modern Applications:</h4>
+                                            <ul>
+                                                <li>Special operations forces</li>
+                                                <li>Counter-terrorism operations</li>
+                                                <li>Unconventional warfare</li>
+                                                <li>Direct action missions</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="leader-card" onclick="selectLeader('mcchrystal')">
+                                    <div class="leader-portrait">🥇</div>
+                                    <div class="leader-info">
+                                        <h3>General Stanley McChrystal</h3>
+                                        <p class="leader-era">US Army (1954-present)</p>
+                                        <p class="leader-specialty">Network-Centric Warfare & JSOC</p>
+                                        <div class="leader-principles">
+                                            <span class="principle">Team of teams approach</span>
+                                            <span class="principle">Adaptive leadership</span>
+                                            <span class="principle">Information sharing</span>
+                                        </div>
+                                        <div class="modern-applications">
+                                            <h4>Modern Applications:</h4>
+                                            <ul>
+                                                <li>Network-centric operations</li>
+                                                <li>Joint special operations</li>
+                                                <li>Organizational adaptation</li>
+                                                <li>Information warfare</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI Consultation Panel -->
+                        <div class="leader-consultation">
+                            <h3>🤖 AI Historical Consultation</h3>
+                            <p>Select a leader above and ask specific questions about applying their strategies to modern scenarios.</p>
+                            <div id="selectedLeader" class="selected-leader hidden">
+                                <div class="leader-avatar"></div>
+                                <div class="leader-details">
+                                    <h4 id="leaderName"></h4>
+                                    <p id="leaderContext"></p>
+                                </div>
+                            </div>
+                            <div class="consultation-input">
+                                <input type="text" id="historicalQuery" placeholder="Ask about modern applications of this leader's tactics..." style="width: 80%;">
+                                <button class="btn btn-primary" onclick="consultHistoricalLeader()">Consult</button>
+                            </div>
+                            <div id="consultationResult" class="consultation-result hidden"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Application State
+        let currentUser = null;
+        let isLoggedIn = false;
+        let chatHistory = [];
+        let auditLog = [];
+
+        // Authentication System
+        const validCredentials = {
+            'admin@dod.gov': 'SecurePass123!',
+            'analyst@army.mil': 'MilAnalyst2025',
+            'commander@navy.mil': 'NavyCommand!',
+            'intel@cia.gov': 'Intelligence@2025',
+            'demo@gov.mil': 'DemoUser123'
+        };
+
+        // Initialize Application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize threat data
+            initializeThreatMatrix();
+            
+            // Check if user is already logged in (in a real app, this would check session/JWT)
+            const savedUser = localStorage.getItem('warfareChroniclesUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                showMainApp();
+            }
+
+            // Add enter key support for chat
+            document.getElementById('chatInput')?.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            // Add enter key support for login
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                login();
+            });
+
+            document.getElementById('loginForm').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    login();
+                }
+            });
+        });
+
+        // Login Function
+        function login() {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('errorMessage');
+            const loginText = document.getElementById('loginText');
+            const loginLoading = document.getElementById('loginLoading');
+
+            // Show loading
+            loginText.classList.add('hidden');
+            loginLoading.classList.remove('hidden');
+
+            // Simulate authentication delay
+            setTimeout(() => {
+                // Validate email domain
+                if (!email.endsWith('.gov') && !email.endsWith('.mil')) {
+                    showError('Access denied. Only .gov and .mil domains are authorized.');
+                    resetLoginButton();
+                    return;
+                }
+
+                // Check credentials
+                if (validCredentials[email] && validCredentials[email] === password) {
+                    currentUser = {
+                        email: email,
+                        role: getUserRole(email),
+                        loginTime: new Date().toISOString()
+                    };
+                    
+                    // Save user session (in production, use secure JWT)
+                    localStorage.setItem('warfareChroniclesUser', JSON.stringify(currentUser));
+                    
+                    // Log successful login
+                    logActivity('Login successful', `User authenticated from ${getClientIP()}`);
+                    
+                    showMainApp();
+                } else {
+                    showError('Invalid credentials. Access denied.');
+                    resetLoginButton();
+                }
+            }, 1500);
+        }
+
+        function resetLoginButton() {
+            const loginText = document.getElementById('loginText');
+            const loginLoading = document.getElementById('loginLoading');
+            loginText.classList.remove('hidden');
+            loginLoading.classList.add('hidden');
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.classList.remove('hidden');
+            setTimeout(() => {
+                errorDiv.classList.add('hidden');
+            }, 5000);
+        }
+
+        function getUserRole(email) {
+            if (email.includes('admin')) return 'Administrator';
+            if (email.includes('analyst')) return 'Analyst';
+            if (email.includes('commander')) return 'Commander';
+            if (email.includes('intel')) return 'Intelligence Officer';
+            return 'Authorized User';
+        }
+
+        function getClientIP() {
+            // In a real implementation, this would get actual client IP
+            return '192.168.1.' + Math.floor(Math.random() * 255);
+        }
+
+        function showMainApp() {
+            // Hide login screen completely
+            const loginScreen = document.getElementById('loginScreen');
+            const mainApp = document.getElementById('mainApp');
+            
+            loginScreen.style.display = 'none';
+            loginScreen.classList.add('hidden');
+            
+            mainApp.style.display = 'block';
+            mainApp.classList.remove('hidden');
+            
+            document.getElementById('userBadge').textContent = `${currentUser.role} | ${currentUser.email}`;
+            isLoggedIn = true;
+            
+            // Initialize chat with welcome message
+            initializeChat();
+            
+            // Initialize threat dashboard data
+            initializeThreatDashboard();
+        }
+
+        function logout() {
+            logActivity('Logout', 'User session terminated');
+            localStorage.removeItem('warfareChroniclesUser');
+            currentUser = null;
+            isLoggedIn = false;
+            chatHistory = [];
+            
+            // Show login screen
+            const loginScreen = document.getElementById('loginScreen');
+            const mainApp = document.getElementById('mainApp');
+            
+            mainApp.style.display = 'none';
+            mainApp.classList.add('hidden');
+            
+            loginScreen.style.display = 'flex';
+            loginScreen.classList.remove('hidden');
+            
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        // Navigation Functions
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.add('hidden'));
+            
+            // Remove active class from all sidebar items
+            const sidebarItems = document.querySelectorAll('.sidebar-item');
+            sidebarItems.forEach(item => item.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(sectionName + 'Section').classList.remove('hidden');
+            
+            // Add active class to clicked item
+            event.target.classList.add('active');
+            
+            // Initialize specific sections
+            if (sectionName === 'analysis') {
+                initializeThreatDashboard();
+            }
+            
+            // Log navigation
+            logActivity('Navigation', `Accessed ${sectionName} section`);
+        }
+
+        // Chat Functions
+        function initializeChat() {
+            const chatMessages = document.getElementById('chatMessages');
+            // Clear existing messages except the initial AI greeting
+            const existingMessages = chatMessages.querySelectorAll('.message');
+            if (existingMessages.length <= 1) {
+                // Add welcome message specific to user role
+                addMessage('ai', `Welcome, ${currentUser.role}. I'm ready to assist with strategic analysis, scenario planning, and military doctrine consultation. What would you like to explore?`);
+            }
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message to chat
+            addMessage('user', message);
+            
+            // Clear input
+            input.value = '';
+            
+            // Log the query
+            logActivity('Chat Query', `User query: "${message.substring(0, 50)}${message.length > 50 ? '...' : ''}"`);
+            
+            // Simulate AI response
+            setTimeout(() => {
+                const aiResponse = generateAIResponse(message);
+                addMessage('ai', aiResponse);
+            }, 1000 + Math.random() * 2000);
+        }
+
+        function addMessage(sender, content) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            
+            const timestamp = new Date().toLocaleTimeString();
+            const senderName = sender === 'user' ? currentUser.role : 'Warfare Chronicles AI';
+            
+            messageDiv.innerHTML = `
+                <div class="sender">${senderName}</div>
+                <div class="content">${content}</div>
+                <div class="timestamp">${timestamp}</div>
+            `;
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            // Store in chat history
+            chatHistory.push({
+                sender: sender,
+                content: content,
+                timestamp: new Date().toISOString(),
+                user: currentUser.email
+            });
+        }
+
+        function generateAIResponse(userMessage) {
+            const message = userMessage.toLowerCase();
+            
+            // Simulate different response types based on keywords
+            if (message.includes('russia') || message.includes('ukraine')) {
+                return "From a Patton-style perspective: Swift, decisive action with overwhelming force concentration at key strategic points. Modern analysis suggests multi-domain operations combining cyber warfare, air superiority, and ground forces. NATO Article 5 protocols would activate collective defense mechanisms. Key considerations include supply line protection, civilian population safety, and diplomatic coordination with allies.";
+            }
+            
+            if (message.includes('china') || message.includes('pacific')) {
+                return "Applying Eisenhower's strategic coordination principles: The Pacific Theater requires island-hopping strategies adapted for modern warfare. Key elements include submarine warfare, carrier strike groups, cyber domain control, and alliance coordination with Japan, Australia, and South Korea. Anti-access/area denial (A2/AD) systems must be neutralized through long-range precision strikes and electronic warfare capabilities.";
+            }
+            
+            if (message.includes('cyber') || message.includes('hack')) {
+                return "Sun Tzu's principle of 'winning without fighting' applies directly to cyber warfare. Modern cyber operations require: 1) Defensive cyber operations (DCO) to protect critical infrastructure, 2) Offensive cyber operations (OCO) to disrupt enemy capabilities, 3) Intelligence gathering through cyber means, 4) Coordination with traditional kinetic operations. Attribution and escalation management are critical considerations.";
+            }
+            
+            if (message.includes('drone') || message.includes('uav')) {
+                return "MacArthur's bold maneuver concepts translate to modern drone warfare through: Swarm tactics for overwhelming enemy defenses, autonomous systems for dangerous missions, ISR (Intelligence, Surveillance, Reconnaissance) capabilities, and precision strike operations. Counter-drone systems must include electronic warfare, kinetic interceptors, and cyber countermeasures.";
+            }
+            
+            if (message.includes('nuclear') || message.includes('wmd')) {
+                return "From Clausewitz's perspective on escalation: Nuclear doctrine requires clear deterrence strategies, secure command and control systems, and crisis de-escalation protocols. Modern considerations include: tactical nuclear weapons, missile defense systems, second-strike capabilities, and alliance nuclear sharing agreements. Diplomatic channels must remain open even during crisis situations.";
+            }
+            
+            // Default strategic response
+            return "Based on classical military doctrine and modern warfare principles: This scenario requires comprehensive analysis of terrain, enemy capabilities, friendly forces, and strategic objectives. I recommend developing courses of action (COAs) that consider multiple domains - land, sea, air, cyber, and space. Would you like me to elaborate on any specific aspect of this strategic situation?";
+        }
+
+        // Scenario Builder Functions
+        function generateScenario() {
+            const name = document.getElementById('scenarioName').value;
+            const threat = document.getElementById('threatLevel').value;
+            const theater = document.getElementById('theater').value;
+            const commander = document.getElementById('commander').value;
+            const description = document.getElementById('scenarioDescription').value;
+            
+            if (!name || !description) {
+                alert('Please provide a scenario name and description.');
+                return;
+            }
+            
+            // Log scenario generation
+            logActivity('Scenario Generated', `Created scenario: ${name} - ${threat} threat level in ${theater} theater`);
+            
+            // Create scenario prompt for AI
+            const scenarioPrompt = `Analyze the following military scenario from the perspective of ${commander}:
+            
+            Scenario: ${name}
+            Theater: ${theater}
+            Threat Level: ${threat}
+            Description: ${description}
+            
+            Provide strategic recommendations, force deployment suggestions, and risk assessments.`;
+            
+            // Switch to chat and send scenario
+            showSection('chat');
+            document.getElementById('chatInput').value = scenarioPrompt;
+            sendMessage();
+            
+            // Clear form
+            clearScenario();
+        }
+
+        function clearScenario() {
+            document.getElementById('scenarioForm').reset();
+        }
+
+        // Audit Logging Functions
+        function logActivity(action, details) {
+            const timestamp = new Date().toISOString();
+            const logEntry = {
+                timestamp: timestamp,
+                user: currentUser ? currentUser.email : 'System',
+                action: action,
+                details: details,
+                ip: getClientIP()
+            };
+            
+            auditLog.unshift(logEntry);
+            
+            // Keep only last 100 entries
+            if (auditLog.length > 100) {
+                auditLog = auditLog.slice(0, 100);
+            }
+            
+            // Update audit display if currently viewing
+            updateAuditDisplay();
+        }
+
+        function updateAuditDisplay() {
+            const auditLogDiv = document.getElementById('auditLog');
+            if (!auditLogDiv) return;
+            
+            // Clear existing entries
+            auditLogDiv.innerHTML = '';
+            
+            // Add recent entries
+            auditLog.slice(0, 20).forEach(entry => {
+                const entryDiv = document.createElement('div');
+                entryDiv.className = 'audit-entry';
+                entryDiv.innerHTML = `
+                    <span class="audit-timestamp">${new Date(entry.timestamp).toLocaleString()}</span> - 
+                    <span class="audit-user">${entry.user}</span> - 
+                    <span class="audit-action">${entry.action}: ${entry.details}</span>
+                `;
+                auditLogDiv.appendChild(entryDiv);
+            });
+        }
+
+        // Security Functions
+        function validateSession() {
+            // In a real implementation, this would validate JWT token
+            if (!currentUser || !isLoggedIn) {
+                logout();
+                return false;
+            }
+            return true;
+        }
+
+        // Auto-logout after inactivity (30 minutes)
+        let inactivityTimer;
+        
+        function resetInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                alert('Session expired due to inactivity. Please log in again.');
+                logout();
+            }, 30 * 60 * 1000); // 30 minutes
+        }
+
+        // Reset timer on user activity
+        document.addEventListener('mousedown', resetInactivityTimer);
+        document.addEventListener('keypress', resetInactivityTimer);
+        document.addEventListener('touchstart', resetInactivityTimer);
+
+        // Initialize security timer
+        resetInactivityTimer();
+
+        // Prevent context menu (right-click) for security
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // Prevent text selection for security
+        document.addEventListener('selectstart', function(e) {
+            if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Threat Assessment Data
+        const threatActors = ['Russia', 'PRC (China)', 'Iran', 'North Korea', 'APT29', 'APT40', 'Lazarus Group', 'Hezbollah'];
+        const warDomains = ['Land', 'Air', 'Sea', 'Cyber', 'Space'];
+        const regions = ['Indo-Pacific', 'Europe/NATO', 'Middle East', 'Arctic', 'Global/Cyber'];
+
+        let globalThreats = [
+            {
+                id: 1,
+                title: "China-Taiwan Strait Tensions",
+                actor: "PRC (China)",
+                region: "Indo-Pacific", 
+                domain: "Sea",
+                riskLevel: "critical",
+                confidence: "high",
+                timestamp: new Date(Date.now() - 2*60*60*1000).toISOString(),
+                description: "Increased PLAN naval activity near Taiwan ADIZ. 15 vessels detected including Type 055 destroyers.",
+                likelihood: 85,
+                severity: 95
+            },
+            {
+                id: 2,
+                title: "Russian Cyber Operations - Ukraine",
+                actor: "Russia",
+                region: "Europe/NATO",
+                domain: "Cyber", 
+                riskLevel: "high",
+                confidence: "high",
+                timestamp: new Date(Date.now() - 4*60*60*1000).toISOString(),
+                description: "APT28 infrastructure targeting Ukrainian power grid. Multiple C2 servers identified.",
+                likelihood: 90,
+                severity: 75
+            },
+            {
+                id: 3,
+                title: "Iranian Naval Exercises - Strait of Hormuz",
+                actor: "Iran",
+                region: "Middle East",
+                domain: "Sea",
+                riskLevel: "moderate",
+                confidence: "medium",
+                timestamp: new Date(Date.now() - 6*60*60*1000).toISOString(),
+                description: "IRGC-N conducting anti-ship missile tests. Standard quarterly exercises observed.",
+                likelihood: 60,
+                severity: 70
+            },
+            {
+                id: 4,
+                title: "North Korean Satellite Launch Preparations",
+                actor: "North Korea",
+                region: "Indo-Pacific",
+                domain: "Space",
+                riskLevel: "moderate",
+                confidence: "medium",
+                timestamp: new Date(Date.now() - 8*60*60*1000).toISOString(),
+                description: "Increased activity at Sohae Satellite Launching Station. Potential dual-use technology test.",
+                likelihood: 70,
+                severity: 65
+            },
+            {
+                id: 5,
+                title: "Russian Arctic Military Buildup",
+                actor: "Russia",
+                region: "Arctic",
+                domain: "Land",
+                riskLevel: "moderate",
+                confidence: "high",
+                timestamp: new Date(Date.now() - 12*60*60*1000).toISOString(),
+                description: "New Bastion-P coastal defense systems deployed to Franz Josef Land.",
+                likelihood: 75,
+                severity: 60
+            },
+            {
+                id: 6,
+                title: "APT40 Infrastructure Reconnaissance", 
+                actor: "APT40",
+                region: "Global/Cyber",
+                domain: "Cyber",
+                riskLevel: "high",
+                confidence: "medium",
+                timestamp: new Date(Date.now() - 1*60*60*1000).toISOString(),
+                description: "Persistent targeting of maritime industry networks. Focus on port management systems.",
+                likelihood: 80,
+                severity: 70
+            }
+        ];
+
+        // Threat Matrix Data
+        let threatMatrix = {};
+        
+        function initializeThreatMatrix() {
+            threatActors.forEach(actor => {
+                threatMatrix[actor] = {};
+                warDomains.forEach(domain => {
+                    // Generate realistic threat scores based on actor capabilities
+                    let likelihood = Math.floor(Math.random() * 40) + 30; // 30-70
+                    let severity = Math.floor(Math.random() * 40) + 40;   // 40-80
+                    
+                    // Adjust based on known actor strengths
+                    if (actor === 'Russia') {
+                        if (domain === 'Cyber' || domain === 'Land') severity += 15;
+                        if (domain === 'Space') severity += 10;
+                    } else if (actor === 'PRC (China)') {
+                        if (domain === 'Sea' || domain === 'Cyber') severity += 20;
+                        if (domain === 'Space') severity += 15;
+                    } else if (actor === 'Iran') {
+                        if (domain === 'Sea' || domain === 'Cyber') severity += 10;
+                    } else if (actor.includes('APT')) {
+                        if (domain === 'Cyber') {
+                            likelihood += 20;
+                            severity += 25;
+                        } else {
+                            likelihood = Math.max(5, likelihood - 40);
+                            severity = Math.max(5, severity - 50);
+                        }
+                    }
+                    
+                    likelihood = Math.min(95, likelihood);
+                    severity = Math.min(95, severity);
+                    
+                    threatMatrix[actor][domain] = {
+                        likelihood: likelihood,
+                        severity: severity,
+                        score: Math.round((likelihood * severity) / 100)
+                    };
+                });
+            });
+        }
+
+        // Initialize dashboard when analysis section is shown
+        function initializeThreatDashboard() {
+            if (!document.getElementById('threatFeed')) {
+                // If threat feed element doesn't exist yet, try again in a moment
+                setTimeout(initializeThreatDashboard, 100);
+                return;
+            }
+            
+            initializeThreatMatrix();
+            updateThreatFeed();
+            generateThreatMatrix();
+            
+            // Auto-refresh every 30 seconds
+            setInterval(() => {
+                if (document.getElementById('threatFeed') && !document.getElementById('analysisSection').classList.contains('hidden')) {
+                    updateThreatFeed();
+                }
+            }, 30000);
+        }
+
+        function updateThreatFeed() {
+            const threatFeed = document.getElementById('threatFeed');
+            if (!threatFeed) return;
+            
+            // Apply current filters
+            const regionFilter = document.getElementById('regionFilter')?.value || 'all';
+            const actorFilter = document.getElementById('actorFilter')?.value || 'all';
+            const confidenceFilter = document.getElementById('confidenceFilter')?.value || 'all';
+            
+            let filteredThreats = globalThreats.filter(threat => {
+                if (regionFilter !== 'all' && !threat.region.toLowerCase().includes(regionFilter)) return false;
+                if (actorFilter !== 'all') {
+                    if (actorFilter === 'nation' && !['Russia', 'PRC (China)', 'Iran', 'North Korea'].includes(threat.actor)) return false;
+                    if (actorFilter === 'cyber' && !threat.actor.includes('APT')) return false;
+                    if (actorFilter === 'terrorist' && !['Hezbollah', 'Hamas'].includes(threat.actor)) return false;
+                }
+                if (confidenceFilter !== 'all' && threat.confidence !== confidenceFilter) return false;
+                return true;
+            });
+            
+            // Update threat statistics
+            updateThreatStats(filteredThreats);
+            
+            // Sort by risk level and timestamp
+            const riskOrder = { critical: 4, high: 3, moderate: 2, low: 1 };
+            filteredThreats.sort((a, b) => {
+                if (riskOrder[a.riskLevel] !== riskOrder[b.riskLevel]) {
+                    return riskOrder[b.riskLevel] - riskOrder[a.riskLevel];
+                }
+                return new Date(b.timestamp) - new Date(a.timestamp);
+            });
+            
+            threatFeed.innerHTML = filteredThreats.slice(0, 10).map(threat => `
+                <div class="threat-item ${threat.riskLevel}" onclick="showThreatDetails(${threat.id})">
+                    <div class="threat-header">
+                        <div class="threat-title">${threat.title}</div>
+                        <div class="threat-timestamp">${formatTimestamp(threat.timestamp)}</div>
+                    </div>
+                    <div class="threat-details">
+                        <div class="threat-meta">
+                            <span class="threat-actor">📍 ${threat.actor}</span>
+                            <span class="threat-region">🌍 ${threat.region}</span>
+                            <span class="threat-domain">⚔️ ${threat.domain}</span>
+                            <span class="threat-confidence">🎯 ${threat.confidence.toUpperCase()}</span>
+                        </div>
+                        <div class="threat-description">${threat.description}</div>
+                        <div class="threat-scores">
+                            <span class="score-item">Likelihood: ${threat.likelihood}%</span>
+                            <span class="score-item">Severity: ${threat.severity}%</span>
+                            <span class="score-item">Risk Score: ${Math.round((threat.likelihood * threat.severity) / 100)}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateThreatStats(threats) {
+            const stats = { critical: 0, high: 0, moderate: 0, low: 0 };
+            
+            threats.forEach(threat => {
+                stats[threat.riskLevel]++;
+            });
+            
+            // Update the UI safely
+            const criticalEl = document.getElementById('criticalCount');
+            const highEl = document.getElementById('highCount');
+            const moderateEl = document.getElementById('moderateCount');
+            const lowEl = document.getElementById('lowCount');
+            
+            if (criticalEl) criticalEl.textContent = stats.critical;
+            if (highEl) highEl.textContent = stats.high;
+            if (moderateEl) moderateEl.textContent = stats.moderate;
+            if (lowEl) lowEl.textContent = stats.low;
+        }
+
+        // Add missing functions for intel reports and other features
+        function showIntelTab(tabName) {
+            // Hide all intel content
+            document.querySelectorAll('.intel-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.intel-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected content and activate tab
+            document.getElementById(tabName + 'Intel').classList.remove('hidden');
+            event.target.classList.add('active');
+        }
+
+        function showCollabTab(tabName) {
+            // Hide all collab content
+            document.querySelectorAll('.collab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.collab-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected content and activate tab
+            document.getElementById(tabName + 'Collab').classList.remove('hidden');
+            event.target.classList.add('active');
+        }
+
+        function generateDetailedBrief() {
+            // Simulate generating a detailed intelligence brief
+            alert('CLASSIFIED INTELLIGENCE BRIEF\n\nGenerating comprehensive analysis...\n\nThis feature would integrate with GPT-4 to create detailed intelligence assessments based on current threat data, OSINT sources, and historical analysis.\n\nIn production, this would generate a multi-page PDF report with threat assessments, recommendations, and strategic implications.');
+            logActivity('Intelligence Brief', 'Generated detailed threat analysis brief');
+        }
+
+        function handleFileUpload(event) {
+            const files = event.target.files;
+            const uploadedFiles = document.getElementById('uploadedFiles');
+            
+            Array.from(files).forEach(file => {
+                const fileDiv = document.createElement('div');
+                fileDiv.className = 'uploaded-file';
+                fileDiv.innerHTML = `
+                    <span>📄 ${file.name}</span>
+                    <span>${(file.size / 1024).toFixed(1)} KB</span>
+                    <button class="btn btn-primary btn-sm" onclick="analyzeFile('${file.name}')">Analyze</button>
+                `;
+                uploadedFiles.appendChild(fileDiv);
+            });
+            
+            logActivity('File Upload', `Uploaded ${files.length} intelligence files for analysis`);
+        }
+
+        function analyzeFile(filename) {
+            alert(`AI ANALYSIS INITIATED\n\nFile: ${filename}\n\nProcessing intelligence document...\n\nIn production, this would:\n• Extract text using OCR/parsing\n• Identify key entities (people, places, organizations)\n• Generate summary and risk assessment\n• Tag threats and correlate with existing intelligence\n• Create actionable intelligence reports`);
+            logActivity('File Analysis', `AI analysis initiated for file: ${filename}`);
+        }
+
+        function runWarGameSimulation() {
+            const theater = document.getElementById('simTheater').value;
+            const adversary = document.getElementById('simAdversary').value;
+            const type = document.getElementById('simType').value;
+            
+            const resultsDiv = document.getElementById('simulationResults');
+            resultsDiv.classList.remove('hidden');
+            
+            // Simulate war game results
+            const outcomes = generateSimulationResults(theater, adversary, type);
+            
+            resultsDiv.innerHTML = `
+                <h4>🎮 War Game Simulation Results</h4>
+                <p><strong>Scenario:</strong> ${type} conflict in ${theater} theater against ${adversary}</p>
+                <div class="sim-results-grid">
+                    <div class="result-metric">
+                        <div class="result-value">${outcomes.winProbability}%</div>
+                        <div class="result-label">Win Probability</div>
+                    </div>
+                    <div class="result-metric">
+                        <div class="result-value">${outcomes.duration}</div>
+                        <div class="result-label">Est. Duration</div>
+                    </div>
+                    <div class="result-metric">
+                        <div class="result-value">${outcomes.casualties}</div>
+                        <div class="result-label">Est. Casualties</div>
+                    </div>
+                    <div class="result-metric">
+                        <div class="result-value">${outcomes.cost}B</div>
+                        <div class="result-label">Est. Cost</div>
+                    </div>
+                </div>
+                <div class="simulation-analysis">
+                    <h5>Strategic Analysis:</h5>
+                    <p>${outcomes.analysis}</p>
+                </div>
+            `;
+            
+            logActivity('War Game Simulation', `Ran ${type} simulation: ${theater} vs ${adversary}`);
+        }
+
+        function generateSimulationResults(theater, adversary, type) {
+            // Generate realistic simulation results based on parameters
+            let winProbability = 65;
+            let duration = "3-6 months";
+            let casualties = "15,000-25,000";
+            let cost = "150-300";
+            let analysis = "";
+            
+            // Adjust based on parameters
+            if (adversary === 'china') {
+                winProbability -= 15;
+                duration = "6-18 months";
+                casualties = "50,000-100,000";
+                cost = "500-1200";
+                analysis = "High-intensity conflict requiring full mobilization of Pacific Fleet and allied forces. Critical factors: Taiwan's defensive capabilities, Chinese A2/AD systems, and speed of initial response.";
+            } else if (adversary === 'russia') {
+                winProbability -= 10;
+                duration = "4-12 months";
+                casualties = "25,000-50,000";
+                cost = "300-800";
+                analysis = "NATO Article 5 activation likely. Key challenges: Russian nuclear doctrine, energy dependencies, and multi-domain operations including cyber warfare.";
+            } else if (adversary === 'iran') {
+                winProbability += 10;
+                duration = "2-4 months";
+                casualties = "10,000-20,000";
+                cost = "100-250";
+                analysis = "Regional conflict with focus on naval operations in Persian Gulf. Iranian asymmetric tactics including proxy forces and missile strikes on regional allies.";
+            }
+            
+            if (type === 'cyber') {
+                casualties = "Minimal";
+                cost = "10-50";
+                analysis += " Cyber operations focus on critical infrastructure, financial systems, and military networks. Attribution and escalation control critical.";
+            }
+            
+            return {
+                winProbability: winProbability + Math.floor(Math.random() * 10 - 5),
+                duration,
+                casualties,
+                cost,
+                analysis
+            };
+        }
+
+        function searchDoctrine() {
+            const query = document.getElementById('doctrineSearch').value;
+            if (!query) return;
+            
+            const resultsDiv = document.getElementById('doctrineResults');
+            
+            // Simulate doctrine analysis
+            resultsDiv.innerHTML = `
+                <div class="doctrine-example">
+                    <h4>🔍 Analysis Results for: "${query}"</h4>
+                    <div class="doctrine-card">
+                        <h5>Historical Context</h5>
+                        <p>Analyzing classical military principles and their application to modern scenarios...</p>
+                    </div>
+                    <div class="doctrine-card">
+                        <h5>Modern Application</h5>
+                        <p>This doctrine can be adapted for current military operations by considering technological advances, asymmetric threats, and multi-domain operations.</p>
+                    </div>
+                    <div class="doctrine-card">
+                        <h5>Strategic Recommendations</h5>
+                        <p>Key adaptations include integration with cyber warfare capabilities, space-based assets, and artificial intelligence for decision support.</p>
+                    </div>
+                </div>
+            `;
+            
+            logActivity('Doctrine Analysis', `Searched military doctrine: ${query}`);
+        }
+
+        // Historical Leaders Functions
+        let selectedLeaderData = null;
+
+        const leaderDatabase = {
+            'sun-tzu': {
+                name: 'Sun Tzu',
+                era: 'Ancient China (544-496 BC)',
+                avatar: '🏛️',
+                specialty: 'Strategic Philosophy & Deception',
+                context: 'Ancient Chinese general and philosopher, author of "The Art of War". Master of strategic thinking and psychological warfare.'
+            },
+            'alexander': {
+                name: 'Alexander the Great',
+                era: 'Macedon (356-323 BC)', 
+                avatar: '👑',
+                specialty: 'Rapid Maneuver & Combined Arms',
+                context: 'Macedonian king who created one of the largest empires through innovative tactics and leadership.'
+            },
+            'hannibal': {
+                name: 'Hannibal Barca',
+                era: 'Carthage (247-183 BC)',
+                avatar: '🐘',
+                specialty: 'Tactical Innovation & Logistics',
+                context: 'Carthaginian general famous for crossing the Alps and tactical brilliance against Rome.'
+            },
+            'patton': {
+                name: 'General George S. Patton',
+                era: 'USA (1885-1945)',
+                avatar: '⭐',
+                specialty: 'Armored Warfare & Aggressive Tactics',
+                context: 'American general known for leadership of armored divisions in WWII and aggressive pursuit tactics.'
+            },
+            'eisenhower': {
+                name: 'General Dwight D. Eisenhower',
+                era: 'USA (1890-1969)',
+                avatar: '🎖️',
+                specialty: 'Coalition Warfare & Strategic Planning',
+                context: 'Supreme Allied Commander in WWII, later US President. Master of coalition management and strategic planning.'
+            },
+            'rommel': {
+                name: 'Field Marshal Erwin Rommel',
+                era: 'Germany (1891-1944)',
+                avatar: '🦊',
+                specialty: 'Desert Warfare & Tactical Innovation',
+                context: 'German field marshal known as the "Desert Fox" for his tactical brilliance in North Africa.'
+            },
+            'nelson': {
+                name: 'Admiral Horatio Nelson',
+                era: 'Royal Navy (1758-1805)',
+                avatar: '⚓',
+                specialty: 'Naval Tactics & Bold Leadership',
+                context: 'British admiral who secured naval supremacy through innovative tactics and personal courage.'
+            },
+            'nimitz': {
+                name: 'Admiral Chester W. Nimitz',
+                era: 'US Navy (1885-1966)',
+                avatar: '🚢',
+                specialty: 'Pacific Theater & Carrier Operations',
+                context: 'US Navy admiral who led Pacific Fleet to victory in WWII through carrier-based operations.'
+            },
+            'mitchell': {
+                name: 'General Billy Mitchell',
+                era: 'US Army Air Service (1879-1936)',
+                avatar: '✈️',
+                specialty: 'Air Power Theory & Strategic Bombing',
+                context: 'Pioneer of military aviation and advocate for independent air power capabilities.'
+            },
+            'yeager': {
+                name: 'General Chuck Yeager',
+                era: 'US Air Force (1923-2020)',
+                avatar: '🛩️',
+                specialty: 'Test Pilot & Fighter Tactics',
+                context: 'First pilot to break the sound barrier, ace fighter pilot and test pilot pioneer.'
+            },
+            'stirling': {
+                name: 'Colonel David Stirling',
+                era: 'British SAS (1915-1990)',
+                avatar: '🎯',
+                specialty: 'Special Forces & Behind Enemy Lines',
+                context: 'Founder of the British SAS, pioneer of modern special operations warfare.'
+            },
+            'mcchrystal': {
+                name: 'General Stanley McChrystal',
+                era: 'US Army (1954-present)',
+                avatar: '🥇',
+                specialty: 'Network-Centric Warfare & JSOC',
+                context: 'Modern general who revolutionized special operations and organizational adaptation.'
+            }
+        };
+
+        function showLeaderCategory(category) {
+            // Hide all category content
+            document.querySelectorAll('.leader-category-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected category and activate tab
+            document.getElementById(category + 'Leaders').classList.remove('hidden');
+            event.target.classList.add('active');
+            
+            logActivity('Historical Research', `Browsed ${category} military leaders`);
+        }
+
+        function selectLeader(leaderId) {
+            const leader = leaderDatabase[leaderId];
+            if (!leader) return;
+            
+            selectedLeaderData = leader;
+            
+            // Show selected leader panel
+            const selectedPanel = document.getElementById('selectedLeader');
+            selectedPanel.classList.remove('hidden');
+            
+            // Update leader info
+            document.querySelector('.leader-avatar').textContent = leader.avatar;
+            document.getElementById('leaderName').textContent = leader.name;
+            document.getElementById('leaderContext').textContent = leader.context;
+            
+            // Clear previous consultation
+            document.getElementById('consultationResult').classList.add('hidden');
+            document.getElementById('historicalQuery').value = '';
+            
+            logActivity('Leader Selection', `Selected ${leader.name} for strategic consultation`);
+        }
+
+        function consultHistoricalLeader() {
+            const query = document.getElementById('historicalQuery').value.trim();
+            if (!query || !selectedLeaderData) return;
+            
+            const resultDiv = document.getElementById('consultationResult');
+            resultDiv.classList.remove('hidden');
+            
+            // Generate consultation response based on leader and query
+            const response = generateLeaderConsultation(selectedLeaderData, query);
+            
+            resultDiv.innerHTML = `
+                <h4>${selectedLeaderData.avatar} ${selectedLeaderData.name}'s Strategic Assessment</h4>
+                <p><strong>Query:</strong> ${query}</p>
+                <div style="margin-top: 15px;">
+                    <p>${response}</p>
+                </div>
+                <div style="margin-top: 15px; font-size: 12px; color: rgba(255,255,255,0.6);">
+                    <em>Note: This AI-generated response is based on historical analysis of ${selectedLeaderData.name}'s documented strategies and principles.</em>
+                </div>
+            `;
+            
+            logActivity('Historical Consultation', `Consulted ${selectedLeaderData.name} about: ${query.substring(0, 50)}...`);
+        }
+
+        function generateLeaderConsultation(leader, query) {
+            const lowerQuery = query.toLowerCase();
+            
+            // Generate responses based on leader expertise and query content
+            if (leader.name === 'Sun Tzu') {
+                if (lowerQuery.includes('cyber') || lowerQuery.includes('information')) {
+                    return "\"All warfare is based on deception\" - In the cyber domain, this principle is paramount. Modern information warfare requires: 1) Misdirection through false flags and attribution masking, 2) Knowing your adversary's capabilities while concealing your own, 3) Winning through disruption rather than destruction. The supreme excellence is to subdue the enemy's networks without fighting a traditional battle.";
+                } else if (lowerQuery.includes('intelligence') || lowerQuery.includes('reconnaissance')) {
+                    return "\"Know your enemy and know yourself\" - Modern intelligence operations must integrate HUMINT, SIGINT, OSINT, and GEOINT. Use deception to make the enemy reveal their capabilities while protecting your own intelligence sources. The skilled strategist defeats the enemy without fighting by superior knowledge and preparation.";
+                }
+                return "\"The supreme excellence is to subdue the enemy without fighting.\" For your scenario, apply the five fundamentals: moral law (just cause), heaven (timing), earth (terrain/domain), command (leadership), and method (doctrine). Victory comes from careful preparation, superior positioning, and forcing the enemy into disadvantageous situations before engagement.";
+            }
+            
+            else if (leader.name === 'General George S. Patton') {
+                if (lowerQuery.includes('tank') || lowerQuery.includes('armor') || lowerQuery.includes('mechanized')) {
+                    return "\"Lead me, follow me, or get out of my way!\" Modern armored warfare requires speed, violence of action, and relentless pursuit. Use combined arms coordination with air support, intelligence, and logistics. Strike hard, strike fast, and never give the enemy time to reorganize. Modern vehicles need the same aggressive spirit with better technology.";
+                } else if (lowerQuery.includes('urban') || lowerQuery.includes('city')) {
+                    return "Urban warfare is a tanker's nightmare, but aggression still wins. Use combined arms: infantry to clear buildings, armor for firepower, and air support for overwatch. Move fast, maintain momentum, and don't get bogged down. \"Accept the challenges so that you can feel the exhilaration of victory.\"";
+                }
+                return "\"Accept the challenges so that you can feel the exhilaration of victory.\" Attack with overwhelming force at the point of decision. Speed and audacity overcome superior numbers. Never let the enemy recover - pursue relentlessly and maintain the initiative. Modern warfare still requires the warrior spirit combined with superior technology and training.";
+            }
+            
+            else if (leader.name === 'General Dwight D. Eisenhower') {
+                if (lowerQuery.includes('coalition') || lowerQuery.includes('nato') || lowerQuery.includes('alliance')) {
+                    return "\"The supreme quality of leadership is unquestionably integrity.\" Modern coalition warfare requires: 1) Clear command structure with unified objectives, 2) Respect for national sensitivities while maintaining operational unity, 3) Comprehensive planning with contingencies, 4) Constant communication and coordination. Success depends on trust and shared commitment to common goals.";
+                } else if (lowerQuery.includes('nuclear') || lowerQuery.includes('strategic')) {
+                    return "\"Plans are nothing; planning is everything.\" Nuclear strategy requires careful escalation management, clear red lines, and credible deterrence. Maintain strategic ambiguity while demonstrating resolve. The goal is prevention through strength, not winning a nuclear war. Diplomacy and military preparation must work in tandem.";
+                }
+                return "\"Leadership is the art of getting someone else to do something you want done because they want to do it.\" Build consensus through clear communication, thorough planning, and shared responsibility. Coordinate all elements - political, military, economic, and informational. Success requires unity of effort across all domains and participants.";
+            }
+            
+            else if (leader.name === 'Admiral Horatio Nelson') {
+                if (lowerQuery.includes('naval') || lowerQuery.includes('sea') || lowerQuery.includes('maritime')) {
+                    return "\"England expects that every man will do his duty.\" Modern naval warfare requires: 1) Control of sea lanes through carrier strike groups, 2) Decisive engagement when advantageous, 3) Bold leadership that inspires confidence. Break the enemy's formation through superior tactics and training. The sea belongs to those who dare to take it.";
+                } else if (lowerQuery.includes('china') || lowerQuery.includes('pacific')) {
+                    return "\"First gain the weather gauge, then engage decisively.\" In the Pacific, control of key islands and sea lanes is crucial. Use carrier aviation to project power beyond enemy reach. Concentrate superior force at the decisive point, but maintain flexibility to respond to enemy movements. Victory requires bold action when opportunity presents itself.";
+                }
+                return "\"Desperate affairs require desperate measures.\" Lead from the front and inspire through personal example. When the decisive moment comes, act boldly and commit fully. Success requires superior seamanship, gunnery, and the courage to engage at close quarters when necessary.";
+            }
+            
+            // Default responses for other leaders
+            return `Based on ${leader.name}'s documented strategies and ${leader.specialty.toLowerCase()}, this situation requires careful analysis of the operational environment, clear objectives, and decisive action. The principles of ${leader.era} remain relevant when adapted to modern capabilities including advanced technology, joint operations, and multi-domain warfare. Consider how ${leader.name}'s core strategic philosophy can be applied to current threats and opportunities.`;
+        }
+
+        // Demo credentials helper (remove in production)
+        console.log('Demo Credentials:');
+        console.log('demo@gov.mil / DemoUser123');
+        console.log('admin@dod.gov / SecurePass123!');
+        console.log('analyst@army.mil / MilAnalyst2025');
+
+        function generateThreatMatrix() {
+            const matrixContainer = document.getElementById('threatMatrix');
+            if (!matrixContainer) return;
+            
+            let matrixHTML = `
+                <table class="matrix-table">
+                    <thead>
+                        <tr>
+                            <th>Threat Actor</th>
+                            ${warDomains.map(domain => `<th>${domain}</th>`).join('')}
+                            <th>Total Risk</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            threatActors.forEach(actor => {
+                let totalRisk = 0;
+                let cellsHTML = '';
+                
+                warDomains.forEach(domain => {
+                    const data = threatMatrix[actor][domain];
+                    const riskClass = getRiskClass(data.score);
+                    totalRisk += data.score;
+                    
+                    cellsHTML += `
+                        <td>
+                            <div class="matrix-cell ${riskClass}" 
+                                 title="Likelihood: ${data.likelihood}% | Severity: ${data.severity}% | Score: ${data.score}"
+                                 onclick="showMatrixDetails('${actor}', '${domain}')">
+                                ${data.score}
+                            </div>
+                        </td>
+                    `;
+                });
+                
+                const avgRisk = Math.round(totalRisk / warDomains.length);
+                const totalRiskClass = getRiskClass(avgRisk);
+                
+                matrixHTML += `
+                    <tr>
+                        <td class="actor-name"><strong>${actor}</strong></td>
+                        ${cellsHTML}
+                        <td><div class="matrix-cell ${totalRiskClass}">${avgRisk}</div></td>
+                    </tr>
+                `;
+            });
+            
+            matrixHTML += '</tbody></table>';
+            matrixContainer.innerHTML = matrixHTML;
+        }
+
+        function getRiskClass(score) {
+            if (score >= 80) return 'risk-critical';
+            if (score >= 65) return 'risk-high';
+            if (score >= 40) return 'risk-moderate';
+            return 'risk-low';
+        }
+
+        function formatTimestamp(timestamp) {
+            const now = new Date();
+            const time = new Date(timestamp);
+            const diffMs = now - time;
+            const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+            const diffMins = Math.floor(diffMs / (1000 * 60));
+            
+            if (diffHours > 24) {
+                return time.toLocaleDateString() + ' ' + time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            } else if (diffHours > 0) {
+                return `${diffHours}h ago`;
+            } else if (diffMins > 0) {
+                return `${diffMins}m ago`;
+            } else {
+                return 'Just now';
+            }
+        }
+
+        function filterThreats() {
+            updateThreatFeed();
+            logActivity('Filter Applied', 'Threat assessment filters updated');
+        }
+
+        function showThreatDetails(threatId) {
+            const threat = globalThreats.find(t => t.id === threatId);
+            if (!threat) return;
+            
+            // Create detailed threat modal/popup (simplified for this demo)
+            alert(`THREAT DETAILS\n\n${threat.title}\n\nActor: ${threat.actor}\nRegion: ${threat.region}\nDomain: ${threat.domain}\nRisk Level: ${threat.riskLevel.toUpperCase()}\nConfidence: ${threat.confidence.toUpperCase()}\n\nDescription: ${threat.description}\n\nLikelihood: ${threat.likelihood}%\nSeverity: ${threat.severity}%\nRisk Score: ${Math.round((threat.likelihood * threat.severity) / 100)}`);
+            
+            logActivity('Threat Detail View', `Viewed details for threat: ${threat.title}`);
+        }
+
+        function showMatrixDetails(actor, domain) {
+            const data = threatMatrix[actor][domain];
+            alert(`THREAT MATRIX DETAILS\n\nActor: ${actor}\nDomain: ${domain}\n\nLikelihood: ${data.likelihood}%\nSeverity: ${data.severity}%\nRisk Score: ${data.score}\n\nThis represents the assessed threat level for ${actor} operations in the ${domain} domain.`);
+            
+            logActivity('Matrix Analysis', `Analyzed ${actor} threat profile for ${domain} domain`);
+        }
+
+        function refreshThreatData() {
+            // Simulate new threat data arriving
+            const newThreat = {
+                id: globalThreats.length + 1,
+                title: "Emergency Threat Update",
+                actor: threatActors[Math.floor(Math.random() * threatActors.length)],
+                region: regions[Math.floor(Math.random() * regions.length)],
+                domain: warDomains[Math.floor(Math.random() * warDomains.length)],
+                riskLevel: ['critical', 'high', 'moderate'][Math.floor(Math.random() * 3)],
+                confidence: ['high', 'medium', 'low'][Math.floor(Math.random() * 3)],
+                timestamp: new Date().toISOString(),
+                description: "Real-time intelligence update - threat parameters updated based on latest SIGINT.",
+                likelihood: Math.floor(Math.random() * 40) + 50,
+                severity: Math.floor(Math.random() * 40) + 50
+            };
+            
+            globalThreats.unshift(newThreat);
+            if (globalThreats.length > 20) globalThreats = globalThreats.slice(0, 20);
+            
+            updateThreatFeed();
+            logActivity('Real-time Update', 'New threat intelligence received and processed');
+        }
+    </script>
+</body>
+</html>
