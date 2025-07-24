@@ -43,3 +43,11 @@ Each scenario lets you simulate how these leaders might operate in today's warfa
 
 This is a front-end prototype designed for **concept demonstration only**. It does not store real credentials or connect to classified systems. All data is for **simulation** and **educational use**. Proper security measures and authentication protocols must be implemented for real-world deployment.
 
+---
+
+## ✍️ Original Work
+
+**Warfare Chronicles** is an original project concept, interface, and design fully built by **Tyvon McBride** for use in AI-driven military strategy simulation and government analysis workflows.
+
+> Built with intent. Aligned with innovation. Committed to national defense.
+
